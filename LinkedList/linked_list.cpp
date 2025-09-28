@@ -13,6 +13,8 @@ class LinkedList{
 private:
     Node* head;
 public:
+    // ================== BASICS ====================
+
     // CONSTRUCTOR
     LinkedList() {
         head = nullptr;
@@ -29,9 +31,23 @@ public:
         cout << "LinkedList destroyed, all nodes deleted." << endl;
     }
 
+    // ==================== HELPERS =====================
+    
+    // GETTER
     Node* getHead(){
         return head;
     }
+
+    void clear() {
+        Node* current = head;
+        while (current) {
+            Node* nextNode = current->next;
+            delete current;
+            current = nextNode;
+        }
+        head = nullptr;
+    }
+
     // ACCESS LAST NODE
     Node* getLastNode(){
         if (head == nullptr) return nullptr; 
@@ -65,7 +81,9 @@ public:
         return nullptr;
     }       
 
-   // INSERT AT BEGINNING
+    // ================== INSERTION ==================== 
+
+    // INSERT AT BEGINNING
     void insertAtHead(int value){
         Node* temp=new Node(value);
         temp->next=head;
@@ -120,6 +138,8 @@ public:
         prevPtr->next=temp;
         cout<<"Node with value "<<value<<" inserted at position "<<location<<endl;
     }
+
+    // ==================== DELETION ======================
 
     // DELETE FROM BEGINNING
     void deleteFromHead(){
@@ -204,7 +224,8 @@ public:
         deleteValue(head->next,value);
     }
 
-    
+    // ==================== TRAVERSALS =====================
+
     // COUNT NO.OF NODES 
     int countList(){
         int count=0;
@@ -219,6 +240,7 @@ public:
         }
         return count;
     }
+    
     // HELPER FUNCTION 1.0
     void printForward() {
         cout<<"Printing in Forward Direction: ";
