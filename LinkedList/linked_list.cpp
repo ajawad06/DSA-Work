@@ -17,6 +17,18 @@ public:
     LinkedList() {
         head = nullptr;
     }
+    //DESTRUCTOR
+    ~LinkedList(){
+        Node* current=head;
+        while (current != nullptr) {
+            Node* nextNode = current->next;
+            delete current;
+            current = nextNode;
+        }
+        head = nullptr;
+        cout << "LinkedList destroyed, all nodes deleted." << endl;
+    }
+
     Node* getHead(){
         return head;
     }
