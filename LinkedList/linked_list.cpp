@@ -185,5 +185,35 @@ public:
         }
         return count;
     }
+    // HELPER FUNCTION 1.0
+    void printForward() {
+        cout<<"Printing in Forward Direction: ";
+        printForward(head);  
+    }
+    // HELPER FUNCTION 1.0
+    void printReverse(){
+        cout<<"\nPrinting in Reverse Direction: ";
+        printReverse(head);
+    }
+
+    // TRAVERSE AND DISPLAY LIST BY RECURSION
+    void printForward(Node* head){
+        // BASE CASE
+        if (head==nullptr) return;
+        cout<<head->data<<" ";
+        
+        // RECURSIVE CASE
+        printForward(head->next);
+    }
+
+    // TRAVERSE AND DISPLAY REVERSE OF LIST BY RECURSION
+    void printReverse(Node* head){
+        // BASE CASE
+        if (head==nullptr) return;
+    
+        // RECURSIVE CASE
+        printReverse(head->next);
+        cout<<head->data<<" ";
+    }
 };
 
