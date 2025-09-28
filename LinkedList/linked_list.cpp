@@ -17,7 +17,9 @@ public:
     LinkedList() {
         head = nullptr;
     }
-    
+    Node* getHead(){
+        return head;
+    }
     // ACCESS LAST NODE
     Node* getLastNode(){
         if (head == nullptr) return nullptr; 
