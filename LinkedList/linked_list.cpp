@@ -84,6 +84,21 @@ public:
         lastnode->next = newNode;
     }
 
+    // INSERT AT END USING RECURSION
+    void insert(int value){
+        insert(head,value);
+    }
+    void insert(Node*& head,int value){
+        if (head==nullptr) {
+            Node* newNode=new Node(value);
+            newNode->next=nullptr;
+            head=newNode;
+            cout<<"\nNew node with value "<<value<<" inserted";
+            return;
+        }
+        insert(head->next,value);
+    }
+
     // INSERT AT CERTAIN POSITION
     void insertAtLocation(int location,int value){
         if (location < 1) {
@@ -168,6 +183,25 @@ public:
         prev->next = temp->next;
         cout << "Deleted node at position " << position << " with value " << temp->data << endl;
         delete temp;
+    }
+
+    // DELETE NODE WITH CERTAIN VALUE
+    void deleteValue(int value){
+        deleteValue(head,value);
+    }
+    void deleteValue(Node*& head, int value){
+        if (head==nullptr) {
+            cout<<"\nNode with this ";
+            return;
+        }
+        if (head->data==value){
+            Node* temp=head;
+            head=head->next;
+            delete temp;
+            cout<<"\nNode with value "<<value<<" deleted";
+            return;
+        }
+        deleteValue(head->next,value);
     }
 
     
