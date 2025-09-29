@@ -81,4 +81,24 @@ public:
         delete temp;
     }
 
+    // ================ TRAVERSALS ===============
+    
+    // PRINT LIST
+    void printList(){
+        Node*temp=head;
+        while (temp){
+            cout<<temp->data<<" ";
+            temp=temp->next;
+        }
+    }
+
+    // REVERSE PRINT LIST
+    void printReverseList(){
+        Node* temp=tail;
+        while (temp){
+            cout<<temp->data<<" ";
+            temp=temp->prev;
+        }
+    }
+
 }
