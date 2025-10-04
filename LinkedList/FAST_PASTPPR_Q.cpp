@@ -8,7 +8,7 @@ X = 2, Y = 3
 Linked List: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11
 
 Output:
-Linked List: 1 -> 2 -> 6 -> 7 -> 1   
+Linked List: 1 -> 2 -> 6 -> 7 -> 11  
 */
 
 //  ======== SOLUTION ========
