@@ -16,7 +16,7 @@ private:
     Node* head;
     Node* tail;
 public:
-// ================== BASICS ====================
+    // ================== BASICS ====================
 
     // CONSTRUCTOR
     DoublyLinkedList() {
@@ -25,6 +25,15 @@ public:
     }
 
     // DESTRUCTOR
+    ~DoublyLinkedList() {
+        Node* current = head;
+        while (current != nullptr) {
+            Node* nextNode = current->next;
+            delete current;
+            current = nextNode;
+        }
+        head = tail = nullptr;
+    }
 
     // ================== INSERTION ==================== 
 
@@ -76,7 +85,7 @@ public:
         if (tail!=nullptr){
             tail->next=nullptr;
         }else{
-            head=nullptr
+            head=nullptr;
         }
         delete temp;
     }
@@ -100,5 +109,4 @@ public:
             temp=temp->prev;
         }
     }
-
-}
+};
