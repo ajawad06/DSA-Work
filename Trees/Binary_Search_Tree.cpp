@@ -41,6 +41,17 @@ private:
         printPreOrder(ptr->left);
         printPreOrder(ptr->right);
     }
+
+    Node<T>* search(Node<T>* ptr,T key){
+        if (ptr==nullptr) return ptr;
+        if (ptr->data==key) return ptr;
+        if (key<ptr->data){
+            return search(ptr->left,key);
+        }else{
+            return search(ptr->right,key);
+        }
+    }
+
 public:
     // ============== CONSTRUCTOR =============
     BST(){
@@ -52,6 +63,7 @@ public:
     // }
 
     // ============== INSERTIONS ==============
+    // 1. ITERATIVE
     void insertNode(T value){
         Node<T>* newNode=new Node(value);
         // 1. Empty Tree
@@ -76,6 +88,20 @@ public:
         }else{
             prev->right=newNode;
         }
+    }
+
+    // 2. RECURSIVE
+    Node<T>* insertRecursive(Node<T>* node,T value){
+        if (node==nullptr){
+            return new Node<T>(value);
+        }
+
+        if (value<node->data){
+            node->left=insertRecursive(node->left,value);
+        }else{
+            node->right=insertRecursive(node->right,value);
+        }
+        return node;
     }
 
     // =============== TRAVERSALS ==============
@@ -144,6 +170,11 @@ public:
             successorParent->right = successor->right;
 
         delete successor;
+    }
+
+    // ============= SEARCH =============
+    Node<T>* searchNode(T key){
+        return search(root,key)
     }
 };
 int main(){
