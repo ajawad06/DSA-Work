@@ -52,15 +52,22 @@ private:
         }
     }
 
+    void destroyTree(Node<T>* ptr){
+        if (ptr==nullptr) return;
+        destroyTree(ptr->left);
+        destroyTree(ptr->right);
+        delete ptr;
+    }
+
 public:
     // ============== CONSTRUCTOR =============
     BST(){
         root=nullptr;
     }
     // ============== DESTRUCTOR ============== 
-    // ~Tree(){
-
-    // }
+    ~BST(){
+        destroyTree(root);
+    }
 
     // ============== INSERTIONS ==============
     // 1. ITERATIVE
