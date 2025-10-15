@@ -183,6 +183,24 @@ public:
     Node<T>* searchNode(T key){
         return search(root,key)
     }
+
+    
+    // ============= PRINT EXTREMES ===========
+    void printSmallestValue(){
+        Node<T>* ptr=root;
+        while (ptr->left!=nullptr){
+            ptr=ptr->left;
+        }
+        cout<<"Smallest Value: "<<ptr->data<<endl;
+    }
+
+    void printLargestValue(){
+        Node<T>* ptr=root;
+        while (ptr->right!=nullptr){
+            ptr=ptr->right;
+        }
+        cout<<"Largest Value: "<<ptr->data<<endl;
+    }
 };
 int main(){
     // DESIGN MENU MENTIONED IN MANUAL

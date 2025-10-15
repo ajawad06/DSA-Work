@@ -24,6 +24,16 @@ int countLeaves(Node* node){
     return countLeaves(node->left)+countLeaves(node->right);
 }
 
+void printLeaves(Node* ptr){
+    if (ptr==nullptr) return;
+    if (ptr->left==nullptr && ptr->right==nullptr) {
+        cout<<ptr->data<<" ";
+        return;
+    }
+    printLeaves(ptr->left);
+    printLeaves(ptr->right);
+}
+
 int countInternalNodes(Node* node){
     if (node==nullptr) return 0;
     if (node->left==nullptr && node->right==nullptr) return 0;
