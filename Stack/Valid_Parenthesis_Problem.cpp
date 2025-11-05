@@ -54,10 +54,26 @@ public:
     
 };
 
-bool matchingBrackets(char open,char close){
-    // check closure of each pair
-    return (open=='[' && close==']') || (open=='(' && close==')') || (open=='{' && close=='}');
-}
+// bool matchingBrackets(char open,char close){
+//     // check closure of each pair
+//     return (open=='[' && close==']') || (open=='(' && close==')') || (open=='{' && close=='}');
+// }
+
+// bool validExpression(string expression){
+//     Stack<char> s(30);
+//     for (char c:expression){
+//         if (c=='{' || c=='(' || c=='['){
+//             s.push(c);
+//         }else if (c=='}' || c==')' || c==']'){
+//             // if opening bracket before doesnot exist
+//             if (s.isEmpty()) return false;
+//             // we match the latest element i.e. opening bracket in stack to the current closing bracket 
+//             if (!matchingBrackets(s.pop(),c)) return false;
+//         }
+//     }
+//     // if stack empty, brackets are in pairs
+//     return s.isEmpty();
+// }
 
 bool validExpression(string expression){
     Stack<char> s(30);
@@ -65,9 +81,13 @@ bool validExpression(string expression){
         if (c=='{' || c=='(' || c=='['){
             s.push(c);
         }else if (c=='}' || c==')' || c==']'){
+            // if opening bracket before doesnot exist
             if (s.isEmpty()) return false;
             // we match the latest element i.e. opening bracket in stack to the current closing bracket 
-            if (!matchingBrackets(s.pop(),c)) return false;
+            char top=s.peek();
+            s.pop();
+            if ((c=='}' && top!='{') || (c==']' && top!='[') || (c==')' && top!='(')) return false;
+
         }
     }
     // if stack empty, brackets are in pairs

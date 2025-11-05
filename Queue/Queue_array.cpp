@@ -19,6 +19,8 @@ public:
             cout<<"Queue is full."<<endl;
             return;
         }
+        // First element case
+        if (front == -1) front = 0;
         rear=(rear+1)%capacity;
         arr[rear]=x;
         size++;
@@ -29,7 +31,12 @@ public:
             cout<<"Queue is empty."<<endl;
             return;
         }
-        front=(front+1)%capacity;
+        if (front == rear) {
+            front = -1;
+            rear = -1;
+        } else {
+            front=(front+1)%capacity;
+        }
         size--;
     }
     
