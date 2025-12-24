@@ -42,6 +42,27 @@ private:
         printPreOrder(ptr->right);
     }
 
+    void printLevelOrder(Node<T>* root){
+        if (root==nullptr) return;
+        queue<Node<T>*> Q;
+        Q.push(root);
+        while (!Q.empty()){
+            Node* curr=Q.front();
+            Q.pop();
+            if (curr==nullptr){
+                if (!Q.empty()) {
+                    Q.push(nullptr);
+                    continue;
+                }else{
+                    break;
+                }
+            }
+            cout<<curr->data<<" ";
+            if (curr->left!=nullptr) Q.push(curr->left);
+            if (curr->right!=nullptr) Q.push(curr->right);
+        }
+    }
+
     Node<T>* search(Node<T>* ptr,T key){
         if (ptr==nullptr) return ptr;
         if (ptr->data==key) return ptr;
